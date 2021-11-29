@@ -38,7 +38,7 @@
 #include <Arduino.h>
 #include <U8x8lib.h>
 
-U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(/* clock=*/ SCL, /* data=*/ SDA, /* reset=*/ U8X8_PIN_NONE);   // OLEDs without Reset of the Display
+U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(SCL, SDA, U8X8_PIN_NONE);
 
 void setup(void)
 {
@@ -50,16 +50,9 @@ int cnt=0;
 void loop(void)
 {
   cnt++;
-  
   u8x8.setFont(u8x8_font_chroma48medium8_r);
   String s(cnt);
-  
   u8x8.drawString( 0, 0, s.c_str() );
-  
-/*  u8x8.drawString(0,0,"Line 0");
-  u8x8.drawString(0,8,"Line 8");
-  u8x8.drawString(0,9,"Line 9"); */
-  u8x8.refreshDisplay();		// only required for SSD1606/7  
-
+  //u8x8.refreshDisplay();		// only required for SSD1606/7  
   delay(500);
 }
