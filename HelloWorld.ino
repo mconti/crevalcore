@@ -46,13 +46,20 @@ void setup(void)
   u8x8.setPowerSave(0);
 }
 
+int cnt=0;
 void loop(void)
 {
+  cnt++;
+  
   u8x8.setFont(u8x8_font_chroma48medium8_r);
-  u8x8.drawString(0,1,"Hello World!");
-  u8x8.drawString(0,0,"Line 0");
+  String s(cnt);
+  
+  u8x8.drawString( 0, 0, s.c_str() );
+  
+/*  u8x8.drawString(0,0,"Line 0");
   u8x8.drawString(0,8,"Line 8");
-  u8x8.drawString(0,9,"Line 9");
+  u8x8.drawString(0,9,"Line 9"); */
   u8x8.refreshDisplay();		// only required for SSD1606/7  
-  delay(2000);
+
+  delay(500);
 }
